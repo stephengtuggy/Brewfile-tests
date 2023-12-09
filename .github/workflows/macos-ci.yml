@@ -36,6 +36,7 @@ jobs:
 
       - name: Run Homebrew command(s)
         run: |
+          brew update
           brew bundle install --file=./Brewfile --no-upgrade
 
   build-one-dependency-at-a-time:
@@ -69,4 +70,7 @@ jobs:
 
       - name: Run Homebrew command(s)
         run: |
+          brew update
           brew install $PYTHON_VERSION_STRING
+          brew install boost
+          brew install boost-python3
