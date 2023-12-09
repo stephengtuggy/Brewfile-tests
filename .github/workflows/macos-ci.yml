@@ -44,7 +44,7 @@ jobs:
       - name: Run Homebrew command(s)
         run: |
           brew update
-          brew bundle install --force --overwrite --file=./Brewfile
+          brew bundle install --force --file=./Brewfile
           echo '==============================='
           echo 'Contents of Brewfile.lock.json:'
           echo '==============================='
