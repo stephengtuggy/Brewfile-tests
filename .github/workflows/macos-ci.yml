@@ -1,0 +1,41 @@
+name: 'MacOS-CI'
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-using-single-brewfile:
+    name: build-using-single-brewfile
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        shell: bash
+
+    strategy:
+      fail-fast: false
+    matrix:
+      os:
+        - macos-12
+      python-version:
+        - 3.12
+
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+      HOMEBREW_NO_INSTALL_UPGRADE: 1
+      HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1
+      PYTHON_VERSION_STRING: "python@${{ matrix.python-version }}"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 #v4.1.1
+        with:
+          fetch-depth: 2
+          submodules: false
+
+      - name: brew update and brew bundle install
+        run: |
+          brew update
+          brew bundle install --file=./Brewfile
