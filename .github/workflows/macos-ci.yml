@@ -71,6 +71,4 @@ jobs:
       - name: Run Homebrew command(s)
         run: |
           brew update
-          brew install $PYTHON_VERSION_STRING
-          brew install boost
-          brew install boost-python3
+          brew install $PYTHON_VERSION_STRING boost boost-python3
