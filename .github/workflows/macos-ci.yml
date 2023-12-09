@@ -38,4 +38,4 @@ jobs:
       - name: brew update and brew bundle install
         run: |
           brew update
-          brew bundle install --file=./Brewfile
+          brew install $PYTHON_VERSION_STRING --link=false
