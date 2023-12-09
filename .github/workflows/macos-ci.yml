@@ -44,7 +44,7 @@ jobs:
       - name: Run Homebrew command(s)
         run: |
           brew update
-          brew bundle install --file=./Brewfile --help
+          brew bundle install --file=./Brewfile
 
   build-one-dependency-at-a-time:
     name: build-one-dependency-at-a-time
