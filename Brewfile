@@ -2,6 +2,8 @@ tap "homebrew/core"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 brew "openssl@3", link: false
+brew "python@3.12"
+brew "boost"
 brew "boost-python3"
 brew "gtk+3"
 brew "gtkglext"

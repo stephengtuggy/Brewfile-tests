@@ -20,12 +20,12 @@ jobs:
         os:
           - macos-12
         python-version:
-          - 3.12
+          - 3.12.0_1
 
     env:
       HOMEBREW_NO_INSTALL_UPGRADE: 1
       #HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1
-      HOMEBREW_BUNDLE_BREW_SKIP: "python@${{ matrix.python-version }}"
+      HOMEBREW_BUNDLE_BREW_SKIP: "python@3.12"
       PYTHON_VERSION_STRING: "python@${{ matrix.python-version }}"
 
     steps:
@@ -45,6 +45,11 @@ jobs:
         run: |
           brew update
           brew bundle install --file=./Brewfile
+          echo '==============================='
+          echo 'Contents of Brewfile.lock.json:'
+          echo '==============================='
+          cat Brewfile.lock.json
+          echo '-------------------------------'
 
   build-one-dependency-at-a-time:
     name: build-one-dependency-at-a-time
