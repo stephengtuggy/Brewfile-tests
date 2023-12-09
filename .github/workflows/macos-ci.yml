@@ -15,11 +15,12 @@ jobs:
         shell: bash
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os:
           - macos-12
         python-version:
+          - 3.11
           - 3.12
 
     env:
@@ -59,11 +60,12 @@ jobs:
         shell: bash
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os:
           - macos-12
         python-version:
+          - 3.11
           - 3.12
 
     env:
