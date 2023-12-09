@@ -43,7 +43,7 @@ jobs:
 
       - name: Run Homebrew command(s)
         run: |
-          brew bundle install --file=./Brewfile
+          brew bundle install --file=./Brewfile --force
           echo '==============================='
           echo 'Contents of Brewfile.lock.json:'
           echo '==============================='
