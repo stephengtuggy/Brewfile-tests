@@ -16,11 +16,11 @@ jobs:
 
     strategy:
       fail-fast: false
-    matrix:
-      os:
-        - macos-12
-      python-version:
-        - 3.12
+      matrix:
+        os:
+          - macos-12
+        python-version:
+          - 3.12
 
     env:
       HOMEBREW_NO_AUTO_UPDATE: 1
