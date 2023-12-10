@@ -6,49 +6,49 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-using-single-brewfile:
-    name: build-using-single-brewfile
-    runs-on: ${{ matrix.os }}
+  #build-using-single-brewfile:
+  #  name: build-using-single-brewfile
+  #  runs-on: ${{ matrix.os }}
 
-    defaults:
-      run:
-        shell: bash
+  #  defaults:
+  #    run:
+  #      shell: bash
 
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - macos-12
-        python-version:
-          - 3.12
+  #  strategy:
+  #    fail-fast: false
+  #    matrix:
+  #      os:
+  #        - macos-12
+  #      python-version:
+  #        - 3.12
 
-    env:
-      HOMEBREW_NO_INSTALL_UPGRADE: 1
-      HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1
-      PYTHON_VERSION_STRING: "python@${{ matrix.python-version }}"
+  #  env:
+  #    HOMEBREW_NO_INSTALL_UPGRADE: 1
+  #    HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1
+  #    PYTHON_VERSION_STRING: "python@${{ matrix.python-version }}"
 
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 #v4.1.1
-        with:
-          fetch-depth: 2
-          submodules: false
+  #  steps:
+  #    - name: Check out repository
+  #      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 #v4.1.1
+  #      with:
+  #        fetch-depth: 2
+  #        submodules: false
 
-      - name: Set up Python
-        uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c #v5.0.0
-        with:
-          python-version: 3.11
-          check-latest: true
+  #    - name: Set up Python
+  #      uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c #v5.0.0
+  #      with:
+  #        python-version: 3.11
+  #        check-latest: true
 
-      - name: Run Homebrew command(s)
-        run: |
-          brew update --verbose
-          brew bundle --verbose --force --file=./Brewfile
-          echo '==============================='
-          echo 'Contents of Brewfile.lock.json:'
-          echo '==============================='
-          cat Brewfile.lock.json
-          echo '-------------------------------'
+  #    - name: Run Homebrew command(s)
+  #      run: |
+  #        brew update --verbose
+  #        brew bundle --verbose --force --file=./Brewfile
+  #        echo '==============================='
+  #        echo 'Contents of Brewfile.lock.json:'
+  #        echo '==============================='
+  #        cat Brewfile.lock.json
+  #        echo '-------------------------------'
 
   build-one-dependency-at-a-time:
     name: build-one-dependency-at-a-time
@@ -80,6 +80,12 @@ jobs:
         with:
           fetch-depth: 2
           submodules: false
+
+      - name: Set up Python
+        uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c #v5.0.0
+        with:
+          python-version: 3.11
+          check-latest: true
 
       - name: Run Homebrew command(s)
         run: |
