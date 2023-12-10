@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #====================================
 # @file   : brew-install-for-cmake.sh
 # @brief  : installs a package with Homebrew, keg-only, then registers that package's
