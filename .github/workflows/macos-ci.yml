@@ -70,7 +70,7 @@ jobs:
       #HOMEBREW_NO_AUTO_UPDATE: 1
       #HOMEBREW_NO_INSTALL_UPGRADE: 1
       #HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1
-      HOMEBREW_DEBUG: 1
+      #HOMEBREW_DEBUG: 1
       HOMEBREW_VERBOSE: 1
       PYTHON_VERSION_STRING: "python@${{ matrix.python-version }}"
 
@@ -88,21 +88,22 @@ jobs:
           check-latest: true
 
       - name: Run Homebrew command(s)
-        run: |
-          brew update --verbose
-          ./script/brew-install-for-cmake.sh 'openssl@3' 0
-          ./script/brew-install-for-cmake.sh $PYTHON_VERSION_STRING 1
-          ./script/brew-install-for-cmake.sh boost 0
-          ./script/brew-install-for-cmake.sh boost-python3 0
-          ./script/brew-install-for-cmake.sh 'gtk+3' 1
-          ./script/brew-install-for-cmake.sh 'gtkglext' 1
-          ./script/brew-install-for-cmake.sh 'sdl12-compat' 1
-          ./script/brew-install-for-cmake.sh 'mesa' 1
-          ./script/brew-install-for-cmake.sh 'mesa-glu' 1
-          ./script/brew-install-for-cmake.sh 'freeglut' 1
-          ./script/brew-install-for-cmake.sh 'openal-soft' 1
-          ./script/brew-install-for-cmake.sh cmake 1
-          ./script/brew-install-for-cmake.sh expat 1
-          ./script/brew-install-for-cmake.sh jpeg 1
-          ./script/brew-install-for-cmake.sh libpng 1
-          ./script/brew-install-for-cmake.sh libvorbis 1
+        run: ./script/bootstrap-on-macos.sh
+        #run: |
+        #  brew update --verbose
+        #  ./script/brew-install-for-cmake.sh 'openssl@3' 0
+        #  ./script/brew-install-for-cmake.sh $PYTHON_VERSION_STRING 1
+        #  ./script/brew-install-for-cmake.sh boost 0
+        #  ./script/brew-install-for-cmake.sh boost-python3 0
+        #  ./script/brew-install-for-cmake.sh 'gtk+3' 1
+        #  ./script/brew-install-for-cmake.sh 'gtkglext' 1
+        #  ./script/brew-install-for-cmake.sh 'sdl12-compat' 1
+        #  ./script/brew-install-for-cmake.sh 'mesa' 1
+        #  ./script/brew-install-for-cmake.sh 'mesa-glu' 1
+        #  ./script/brew-install-for-cmake.sh 'freeglut' 1
+        #  ./script/brew-install-for-cmake.sh 'openal-soft' 1
+        #  ./script/brew-install-for-cmake.sh cmake 1
+        #  ./script/brew-install-for-cmake.sh expat 1
+        #  ./script/brew-install-for-cmake.sh jpeg 1
+        #  ./script/brew-install-for-cmake.sh libpng 1
+        #  ./script/brew-install-for-cmake.sh libvorbis 1
